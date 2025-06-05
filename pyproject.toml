@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "youtubeautomation"
+version = "0.1.0"
+description = ""
+authors = ["Your Name"] 
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-generativeai = "^0.5.0"  
+moviepy = "^1.0.3"            
+gTTS = "^2.5.1"               
+Pillow = "^10.3.0"            
+python-dotenv = "^1.0.1"      
+requests = "^2.31.0"          
+openai = "^1.84.0"
+hume = "^0.8.3"
+aiofiles = "^24.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
