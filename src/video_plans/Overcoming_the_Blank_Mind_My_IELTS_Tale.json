@@ -1,0 +1,27 @@
+{
+    "video_title": "Overcoming the Blank Mind: My IELTS Tale",
+    "sections": [
+        {
+            "section_title": "The Hook",
+            "narrative_script": "<speak><prosody rate='+15%'><prosody emotion='fearful'>I remember sitting there, my mind completely blank. <break time='500ms'/> The fear of having nothing to say during my IELTS exam was so real.</prosody></prosody></speak>",
+            "stock_media_search_query": "frustrated student",
+            "keywords_for_highlighting": [
+                "blank",
+                "fear",
+                "stuck"
+            ]
+        },
+        {
+            "section_title": "The Core Idea",
+            "narrative_script": "<speak><prosody rate='+15%'><prosody emotion='assertive'>Let me share what helped me. <break time='500ms'/> I imagined I was chatting with a friend instead of facing the examiner. <break time='500ms'/> This simple shift turned my fear into clear thoughts.</prosody></prosody></speak>",
+            "stock_media_search_query": "lightbulb moment",
+            "keywords_for_highlighting": [
+                "idea",
+                "solution",
+                "method"
+            ]
+        }
+    ],
+    "call_to_action_script": "<speak><prosody rate='+15%'><prosody emotion='calm'>Try it out. You might just surprise yourself with the results.</prosody></speak>",
+    "background_music_suggestion": "lofi hip hop"
+}

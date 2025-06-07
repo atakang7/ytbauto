@@ -1,0 +1,47 @@
+{
+    "video_title": "How to Ace the IELTS Speaking Test: My Personal Story",
+    "sections": [
+        {
+            "section_title": "The Hook",
+            "narrative_script": "<speak><prosody rate='+15%'><speechify:style emotion='fearful'>You pick up the topic card... your heart races... and suddenly, your mind goes blank.</speechify:style><break time='300ms'/><speechify:style emotion='calm'>But what if I told you there's a simple way to always have something ready to say?</speechify:style></prosody></speak>",
+            "stock_media_search_query": "nervous student with exam card",
+            "keywords_for_highlighting": [
+                "blank",
+                "heart races",
+                "calm"
+            ]
+        },
+        {
+            "section_title": "Shared Struggle",
+            "narrative_script": "<speak><prosody rate='+15%'><speechify:style emotion='empathetic'>I remember my IELTS test day\u2014frozen in place. Ideas in my head, but no structure. That one minute to prepare? Gone in a flash.</speechify:style></prosody></speak>",
+            "stock_media_search_query": "IELTS speaking test struggle",
+            "keywords_for_highlighting": [
+                "frozen",
+                "ideas",
+                "unprepared"
+            ]
+        },
+        {
+            "section_title": "The Simple Shift",
+            "narrative_script": "<speak><prosody rate='+15%'><speechify:style emotion='assertive'>Here's what changed it all: the 'S.P.E.A.K.' method. During your prep minute, jot down these five keywords: Situation, People, Emotions, Actions, Key takeaway. That's your roadmap. Your words will flow.</speechify:style></prosody></speak>",
+            "stock_media_search_query": "student writing speech notes",
+            "keywords_for_highlighting": [
+                "S.P.E.A.K.",
+                "keywords",
+                "flow"
+            ]
+        },
+        {
+            "section_title": "The New Reality",
+            "narrative_script": "<speak><prosody rate='+15%'><speechify:style emotion='excited'>After using this approach, I could speak naturally, with real stories and genuine confidence. You can too.</speechify:style></prosody></speak>",
+            "stock_media_search_query": "confident student speaking",
+            "keywords_for_highlighting": [
+                "naturally",
+                "confidence",
+                "speak"
+            ]
+        }
+    ],
+    "call_to_action_script": "<speak><prosody rate='+15%'><speechify:style emotion='cheerful'>Want more tips like this? My daily IELTS short course has helped thousands speak fluently\u2014check it out below. Give it a try.</speechify:style></prosody></speak>",
+    "background_music_suggestion": "lofi hip hop"
+}
