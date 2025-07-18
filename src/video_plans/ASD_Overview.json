@@ -1,0 +1,82 @@
+{
+  "video_title": "ASD Overview",
+  "sections": [
+    {
+      "section_title": "Introduction to ASD",
+      "sub_scenes": [
+        {
+          "narration_text": "ASD stands for Autism Spectrum Disorder.",
+          "visual_search_query": "Autism Spectrum Disorder concept",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "ASD",
+            "Autism Spectrum Disorder"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "It is a developmental disorder that affects communication and behavior.",
+          "visual_search_query": "communication challenges ASD",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "developmental disorder",
+            "communication",
+            "behavior"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Symptoms and Signs",
+      "sub_scenes": [
+        {
+          "narration_text": "People with ASD often have difficulty with social interactions.",
+          "visual_search_query": "social interactions autism difficulty",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "difficulty",
+            "social interactions"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "They might also exhibit repetitive behaviors.",
+          "visual_search_query": "repetitive behaviors autism",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "repetitive behaviors"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Diagnosis and Support",
+      "sub_scenes": [
+        {
+          "narration_text": "Early diagnosis of ASD can lead to better support.",
+          "visual_search_query": "early diagnosis autism",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "early diagnosis",
+            "support"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "Support includes various therapies and educational strategies.",
+          "visual_search_query": "autism therapy education",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "therapies",
+            "educational strategies"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Learn more about ASD to support those in need.",
+  "background_music_suggestion": "gentle_informative_tone.mp3"
+}

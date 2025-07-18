@@ -1,0 +1,97 @@
+{
+  "video_title": "Create Random Video",
+  "sections": [
+    {
+      "section_title": "Introduction",
+      "sub_scenes": [
+        {
+          "narration_text": "Creating a video can be as thrilling as embarking on an adventure.",
+          "visual_search_query": "exciting adventure scenery",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "thrilling",
+            "adventure"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "The Concept",
+      "sub_scenes": [
+        {
+          "narration_text": "The first step is to come up with a random concept.",
+          "visual_search_query": "brainstorming session creative process",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "concept",
+            "random"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Gathering Elements",
+      "sub_scenes": [
+        {
+          "narration_text": "Gather various elements that will bring your video to life.",
+          "visual_search_query": "collecting video elements animation",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "elements",
+            "life"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Editing Phase",
+      "sub_scenes": [
+        {
+          "narration_text": "Dive into the editing phase where magic truly happens.",
+          "visual_search_query": "video editing process",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "editing phase",
+            "magic"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "Final Touches",
+      "sub_scenes": [
+        {
+          "narration_text": "Add the final touches to ensure everything flows smoothly.",
+          "visual_search_query": "finishing touches video production",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "final touches",
+            "smoothly"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Conclusion",
+      "sub_scenes": [
+        {
+          "narration_text": "And there you have it, a unique video from a random idea.",
+          "visual_search_query": "unique creative video project",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "unique video",
+            "random idea"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Start your own video adventure today!",
+  "background_music_suggestion": "Energetic and inspiring instrumental"
+}

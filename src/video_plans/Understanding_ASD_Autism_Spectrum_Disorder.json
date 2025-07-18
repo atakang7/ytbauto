@@ -1,0 +1,86 @@
+{
+  "video_title": "Understanding ASD (Autism Spectrum Disorder)",
+  "sections": [
+    {
+      "section_title": "Introduction to ASD",
+      "sub_scenes": [
+        {
+          "narration_text": "Autism Spectrum Disorder, known as ASD, affects about 1 in 54 children.",
+          "visual_search_query": "child autism awareness",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "ASD",
+            "1 in 54 children"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "It's a developmental disorder that affects communication and behavior.",
+          "visual_search_query": "child communicating with therapist",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "developmental disorder",
+            "communication",
+            "behavior"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Characteristics of ASD",
+      "sub_scenes": [
+        {
+          "narration_text": "People with ASD may communicate, interact, behave, and learn in ways that are different from most other people.",
+          "visual_search_query": "diverse behavior and communication in autism",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "communicate",
+            "interact",
+            "behave",
+            "learn"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "The learning, thinking, and problem-solving abilities of people with ASD can range from gifted to severely challenged.",
+          "visual_search_query": "autism learning spectrum",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "learning",
+            "thinking",
+            "problem-solving"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Living with ASD",
+      "sub_scenes": [
+        {
+          "narration_text": "With the right support, people with ASD can lead fulfilling lives.",
+          "visual_search_query": "autism support and fulfillment",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "support",
+            "fulfilling lives"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "Early intervention can greatly improve the development of children with ASD.",
+          "visual_search_query": "autism early intervention success",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "early intervention",
+            "development"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Learn more about Autism Spectrum Disorder and support those in need.",
+  "background_music_suggestion": "uplifting instrumental music"
+}

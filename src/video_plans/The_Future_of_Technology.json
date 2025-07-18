@@ -1,0 +1,43 @@
+{
+  "video_title": "The Future of Technology",
+  "sections": [
+    {
+      "section_title": "Introduction to AI",
+      "sub_scenes": [
+        {
+          "narration_text": "Artificial intelligence is transforming the world.",
+          "visual_search_query": "artificial intelligence technology",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "artificial intelligence",
+            "transforming"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "AI is used in many industries such as healthcare and finance.",
+          "visual_search_query": "AI in healthcare and finance",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "industries",
+            "healthcare",
+            "finance"
+          ],
+          "motion_type": "pan_right"
+        },
+        {
+          "narration_text": "The growth of AI is unprecedented.",
+          "visual_search_query": "growth of artificial intelligence",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "growth",
+            "unprecedented"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Explore the World of AI",
+  "background_music_suggestion": "Futuristic synth wave music"
+}

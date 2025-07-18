@@ -1,0 +1,78 @@
+{
+  "video_title": "A Day in the Life of 'A'",
+  "sections": [
+    {
+      "section_title": "The World of 'A'",
+      "sub_scenes": [
+        {
+          "narration_text": "A day begins with the letter A.",
+          "visual_search_query": "sunrise over cityscape",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "day",
+            "begins",
+            "A"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "A apples are picked in the morning.",
+          "visual_search_query": "apple orchard morning",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "apples",
+            "picked",
+            "morning"
+          ],
+          "motion_type": "pan_left"
+        },
+        {
+          "narration_text": "Around noon, alpacas wander in fields.",
+          "visual_search_query": "alpacas in fields midday",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "noon",
+            "alpacas",
+            "fields"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "Athletes train in the afternoon.",
+          "visual_search_query": "athletes training outdoor",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "athletes",
+            "train",
+            "afternoon"
+          ],
+          "motion_type": "pan_right"
+        },
+        {
+          "narration_text": "As the sun sets, artists begin their work.",
+          "visual_search_query": "sunset painting artist studio",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "sun",
+            "sets",
+            "artists"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "A quiet night falls over the city.",
+          "visual_search_query": "night city lights",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "quiet",
+            "night",
+            "city"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Discover the beauty of simplicity with 'A'.",
+  "background_music_suggestion": "Gentle acoustic guitar melody"
+}

@@ -1,0 +1,70 @@
+{
+  "video_title": "Discovering Something New",
+  "sections": [
+    {
+      "section_title": "Introduction to Curiosity",
+      "sub_scenes": [
+        {
+          "narration_text": "Have you ever felt the excitement of discovering something new?",
+          "visual_search_query": "person discovering new place with excitement",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "excitement",
+            "discovering",
+            "new"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "The Thrill of Exploration",
+      "sub_scenes": [
+        {
+          "narration_text": "Exploration leads to unexpected joys and thrills.",
+          "visual_search_query": "adventurer exploring landscape",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "exploration",
+            "joys",
+            "thrills"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Embracing Uncertainty",
+      "sub_scenes": [
+        {
+          "narration_text": "Uncertainty is often the first step to a great adventure.",
+          "visual_search_query": "person standing at crossroads",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "uncertainty",
+            "adventure"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "Conclusion",
+      "sub_scenes": [
+        {
+          "narration_text": "So go out, explore, and find your something new.",
+          "visual_search_query": "happy person finding something",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "explore",
+            "find",
+            "new"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Subscribe to join us on more exciting discoveries!",
+  "background_music_suggestion": "uplifting-adventure-music"
+}

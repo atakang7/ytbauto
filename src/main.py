@@ -1,169 +1,246 @@
-# src/main.py
 """
-Main entry point and orchestrator for the AI Video Generation script.
+Main Orchestrator for the AI Video Generation Script
 
-This script ties together all the modules to perform the following steps:
-1.  Load configuration and the brand persona.
-2.  Get a video idea from the user.
-3.  Use an AI to plan the video script and visual choices.
-4.  Generate narration audio using a TTS service.
-5.  Generate caption timings using ASR.
-6.  Fetch all visual and audio assets.
-7.  Assemble all elements into a final video file.
+This script initializes the system, presents the user with creation modes, and
+delegates the chosen workflow to the appropriate services.
 """
+# --- Standard Library Imports ---
 import asyncio
 import argparse
 import json
+import logging
 import os
+import shutil
+import sys
 import traceback
+from typing import Optional
+
+# --- Third-Party Imports ---
+from dotenv import load_dotenv
 from openai import OpenAI
+from tqdm import tqdm
 
-# Import our own modules
+# --- Local Application Imports ---
 import config
-from utils import print_status, print_error, print_warning, sanitize_filename, setup_project_directories, setup_pillow_antialias
-from planning import load_brand_persona, plan_video_content
-from audio import generate_and_process_audio, transcribe_audio_segments
-from visuals import create_processed_visual_clip, create_asr_synced_captions, fetch_from_pexels, fetch_music_from_pixabay
+from services import (
+    PlanningService, AudioService, MediaService,
+    GenerativeAssemblyService, RemixAssemblyService, VideoAnalysisService
+)
+from models import VideoPlan, RemixPlan
+from utils import sanitize_filename
+from video_processing.editor import VideoEditor
 
-# MoviePy imports for the final assembly
-from moviepy.editor import AudioFileClip, CompositeAudioClip, CompositeVideoClip, vfx, afx, concatenate_audioclips
+# ======================================================================================
+# --- 1. Core Setup: Logging and Dependency Checks ---
+# ======================================================================================
 
-def initialize_clients():
-    """Initializes and returns API clients based on .env settings."""
-    if not config.OPENAI_API_KEY:
-        print_error("OPENAI_API_KEY not found in .env file. Exiting.")
-        return None, None
-    openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - [%(funcName)s] - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+log = logging.getLogger(__name__)
+load_dotenv()
+
+def check_dependencies():
+    """
+    Checks for critical libraries and external tools at startup and exits if not found.
+    """
+    log.info("Checking for critical dependencies...")
+    try:
+        import moviepy.editor
+        import scenedetect
+        import mutagen
+        import whisper
+        import cv2
+        import numpy
+        import tqdm
+        log.info("All critical Python libraries are installed.")
+    except ImportError as e:
+        log.critical(f"Missing critical dependency: {e.name}.")
+        log.critical("Please run 'poetry install' to install all required packages.")
+        sys.exit(1)
+
+    if not shutil.which("ffmpeg"):
+        log.critical("FFmpeg not found in system PATH.")
+        log.critical("FFmpeg is required by MoviePy for video processing.")
+        log.critical("Please install FFmpeg (e.g., 'sudo apt install ffmpeg' or 'brew install ffmpeg') and ensure it is in your PATH.")
+        sys.exit(1)
     
-    speechify_client = None
-    if config.SPEECHIFY_API_KEY:
-        try:
-            from speechify import Speechify
-            speechify_client = Speechify(token=config.SPEECHIFY_API_KEY)
-            print_status("Speechify SDK detected and client initialized.")
-        except ImportError:
-            print_warning("Speechify SDK not installed, but API key is present. Run 'pip install speechify-api'")
-        except Exception as e:
-            print_warning(f"Speechify client initialization failed: {e}")
+    log.info("External dependency 'ffmpeg' found.")
+
+
+# ======================================================================================
+# --- 2. Mode-Specific Workflows ---
+# ======================================================================================
+
+async def run_generative_mode(persona_file: str):
+    log.info("🚀 Starting Generative Mode...")
+    openai_client, speechify_client = initialize_clients()
+    planner = PlanningService(openai_client)
+    if not (brand_persona := planner.load_brand_persona(persona_file)): return
+    if not (user_prompt := input("\nEnter video idea: ").strip()): return
+    
+    final_plan: Optional[VideoPlan] = await asyncio.to_thread(planner.create_generative_plan, user_prompt, brand_persona)
+    if not final_plan: return
+
+    plan_path = os.path.join(config.PLANS_DIR, f"{sanitize_filename(final_plan.video_title)}.json")
+    with open(plan_path, 'w') as f: f.write(final_plan.json(indent=2))
+    log.info(f"Plan saved to '{plan_path}'")
+    
+    choice = input("AI plan saved. Proceed with asset gathering and rendering? (y/n): ").strip().lower()
+    if choice != 'y':
+        log.info("Render cancelled by user.")
+        return
+
+    editor = VideoEditor()
+    audio_service = AudioService(openai_client, speechify_client)
+    media_service = MediaService()
+    assembly_service = GenerativeAssemblyService(editor, media_service, audio_service)
+
+    processed_audio, media_assets = await asyncio.gather(
+        audio_service.generate_and_process_audio(final_plan, brand_persona),
+        media_service.get_assets_for_plan(final_plan)
+    )
+    
+    await assembly_service.assemble_video(final_plan, processed_audio, media_assets)
+
+async def run_transformative_mode(persona_file: str):
+    log.info("🚀 Starting Transformative Mode...")
+    try:
+        openai_client, speechify_client = initialize_clients()
+        planner = PlanningService(openai_client)
+        
+        video_path = input("\nEnter full path to source video: ").strip()
+        if not video_path or not os.path.exists(video_path):
+            log.error(f"File not found or path is empty: {video_path}"); return
+        
+        analysis_service = VideoAnalysisService(video_path, openai_client)
+        analysis_service.get_video_properties()
+        scenes = analysis_service.detect_scenes()
+        tagged_scenes = await analysis_service.tag_scenes_with_vision(scenes)
+        
+        print("\n--- AI Scene Tagging Complete ---")
+        for scene in tagged_scenes: print(f"  Scene {scene.scene_id}: Tags = {scene.tags}")
+        
+        if not (remix_query := input("\nEnter remix request (e.g., 'summarize this video'): ").strip()): return
+        
+        remix_plan: Optional[RemixPlan] = await planner.create_remix_plan(remix_query, tagged_scenes, video_path)
+        if not remix_plan: return
+        
+        plan_path = os.path.join(config.PLANS_DIR, f"{sanitize_filename(remix_plan.remix_video_title)}.json")
+        with open(plan_path, 'w') as f: f.write(remix_plan.json(indent=2))
+        log.info(f"Plan saved to '{plan_path}'")
+        
+        choice = input("AI plan saved. Proceed with rendering? (y/n): ").strip().lower()
+        if choice != 'y':
+            log.info("Render cancelled by user.")
+            return
+
+        editor = VideoEditor()
+        media_service = MediaService()
+        audio_service = AudioService(openai_client, speechify_client)
+        remix_assembly_service = RemixAssemblyService(media_service, audio_service, editor)
+        
+        await remix_assembly_service.assemble_and_render_remix(remix_plan, tagged_scenes)
+    except Exception as e:
+        log.critical(f"Fatal error in Transformative Mode: {e}"); traceback.print_exc()
+
+async def run_render_from_file_mode():
+    log.info("🚀 Starting Render From Plan File Mode...")
+    try:
+        plan_path = input("\nEnter the full path to your plan JSON file: ").strip()
+        if not plan_path or not os.path.exists(plan_path):
+            log.error(f"Plan file not found: {plan_path}"); return
+        
+        with open(plan_path, 'r') as f:
+            data = json.load(f)
+
+        openai_client, speechify_client = initialize_clients()
+        editor = VideoEditor()
+        audio_service = AudioService(openai_client, speechify_client)
+        media_service = MediaService()
+        planner = PlanningService(openai_client)
+
+        if 'video_title' in data and 'sections' in data:
+            log.info("Detected a Generative Plan (VideoPlan).")
+            final_plan = VideoPlan.parse_obj(data)
+            brand_persona = planner.load_brand_persona("brand_persona.json")
+            if not brand_persona: 
+                log.error("Could not load default brand persona 'brand_persona.json'."); return
+
+            assembly_service = GenerativeAssemblyService(editor, media_service, audio_service)
+            processed_audio, media_assets = await asyncio.gather(
+                audio_service.generate_and_process_audio(final_plan, brand_persona),
+                media_service.get_assets_for_plan(final_plan)
+            )
+            await assembly_service.assemble_video(final_plan, processed_audio, media_assets)
+
+        elif 'remix_video_title' in data and 'source_video_path' in data:
+            log.info("Detected a Transformative Plan (RemixPlan).")
+            remix_plan = RemixPlan.parse_obj(data)
             
+            analysis_service = VideoAnalysisService(remix_plan.source_video_path, openai_client)
+            scenes = analysis_service.detect_scenes()
+            
+            remix_assembly_service = RemixAssemblyService(media_service, audio_service, editor)
+            await remix_assembly_service.assemble_and_render_remix(remix_plan, scenes)
+        
+        else:
+            log.error("Could not determine plan type from the provided JSON file.")
+
+    except Exception as e:
+        log.critical(f"Fatal error during render from file: {e}"); traceback.print_exc()
+
+
+# ======================================================================================
+# --- 3. Main Orchestrator and Execution ---
+# ======================================================================================
+
+def setup_directories():
+    log.info("Setting up project directories...")
+    if os.path.exists(config.TEMP_ASSETS_DIR): shutil.rmtree(config.TEMP_ASSETS_DIR)
+    dirs_to_create = [config.OUTPUT_DIR, config.TEMP_ASSETS_DIR, config.PLANS_DIR]
+    for path in dirs_to_create:
+        os.makedirs(path, exist_ok=True)
+
+def initialize_clients() -> tuple[OpenAI, Optional['Speechify']]:
+    if not (api_key := config.OPENAI_API_KEY): raise ValueError("OPENAI_API_KEY not found.")
+    openai_client = OpenAI(api_key=api_key)
+    speechify_client = None
+    try:
+        from speechify import Speechify
+        if config.SPEECHIFY_API_KEY:
+            speechify_client = Speechify(token=config.SPEECHIFY_API_KEY)
+    except ImportError:
+        log.info("Speechify SDK not installed, it will not be available.")
+    except Exception as e:
+        log.warning(f"Speechify client failed to initialize: {e}")
     return openai_client, speechify_client
 
-async def main_async_logic(persona_file: str):
-    """Orchestrates the entire video creation process."""
-    setup_pillow_antialias()
-    setup_project_directories(
-        dirs_to_create=[config.OUTPUT_DIR, config.TEMP_ASSETS_DIR, config.PLANS_DIR],
-        temp_dir_to_clean=config.TEMP_ASSETS_DIR
-    )
-
-    # 1. Load Persona & Get Topic
-    brand_persona = load_brand_persona(persona_file)
-    if not brand_persona: exit()
-    
-    user_prompt = input("\nEnter video idea (or a detailed plan): ").strip()
-    if not user_prompt: print_error("No prompt. Exiting."); return
-
-    # 2. Initialize Clients
-    openai_client, speechify_client = initialize_clients()
-    if not openai_client: exit()
-    
-    # 3. AI Planning
-    final_plan = plan_video_content(user_prompt, brand_persona, openai_client)
-    if not final_plan: print_error("Video planning failed. Exiting."); return
-    
-    plan_fname = f"{sanitize_filename(final_plan.get('video_title', user_prompt[:40]))}.json"
-    plan_path = os.path.join(config.PLANS_DIR, plan_fname)
-    with open(plan_path, 'w', encoding='utf-8') as f: json.dump(final_plan, f, indent=4)
-    print_status(f"Final plan saved to '{plan_path}'")
-
-    # 4. Audio Generation & Processing
-    tts_segments = []
-    for sec in final_plan.get("sections", []):
-        if sec.get("narrative_script"):
-            tts_segments.append({"text": sec["narrative_script"], "id": sanitize_filename(sec.get("section_title")), "keywords": sec.get("keywords_for_highlighting", [])})
-    if final_plan.get("call_to_action_script"):
-        tts_segments.append({"text": final_plan["call_to_action_script"], "id": "cta", "keywords": []})
-    
-    tts_preference = "speechify" if speechify_client else "openai"
-    processed_audio = await generate_and_process_audio(tts_segments, tts_preference, speechify_client, openai_client, final_plan.get('video_title'))
-    transcribe_audio_segments(processed_audio)
-
-    # 5. Video Assembly
-    print_status("Beginning video assembly process...")
-    all_clips = []
-    timeline_pos = 0.0
-    narration_clips = [AudioFileClip(s['filepath']) for s in processed_audio if s.get('filepath')]
-    
-    # Create master narration track and calculate total duration
-    full_narration_clip = concatenate_audioclips(narration_clips) if narration_clips else None
-    total_duration = full_narration_clip.duration if full_narration_clip else 0
-
-    # Prepare background music
-    music_clip = None
-    music_path = fetch_music_from_pixabay(final_plan.get("background_music_suggestion"), config.PIXABAY_API_KEY, config.TEMP_ASSETS_DIR)
-    if music_path:
-        try:
-            music_clip = AudioFileClip(music_path).fx(vfx.loop, duration=total_duration).fx(afx.audio_fadein, 1.0).fx(afx.volumex, 0.08)
-            print_status("Background music loaded and processed.")
-        except Exception as e:
-            print_error(f"Could not process music: {e}")
-
-    # Create visual and caption clips for each segment
-    for seg_data in final_plan.get("sections", []) + [{"section_title": "CTA", "narrative_script": final_plan.get("call_to_action_script"), "stock_media_search_query": "abstract gradient background"}]:
-        if not seg_data.get("narrative_script"): continue
-        
-        segment_id = sanitize_filename(seg_data.get('section_title'))
-        audio_seg = next((s for s in processed_audio if s["id"] == segment_id), None)
-        duration = audio_seg['duration'] if audio_seg else config.MIN_CLIP_DURATION
-        
-        media_info = fetch_from_pexels(seg_data.get("stock_media_search_query"), segment_id, config.PEXELS_API_KEY, config.TEMP_ASSETS_DIR)
-        if media_info and media_info.get("path"):
-            vis_clip = create_processed_visual_clip(media_info["path"], duration)
-            if vis_clip:
-                all_clips.append(vis_clip.set_start(timeline_pos))
-                if audio_seg and audio_seg.get("asr_word_timings"):
-                    captions = create_asr_synced_captions(audio_seg["asr_word_timings"], seg_data.get("keywords_for_highlighting", []))
-                    for cap in captions:
-                        all_clips.append(cap.set_start(cap.start + timeline_pos))
-        
-        timeline_pos += duration
-
-    # 6. Final Composition and Render
-    if not all_clips:
-        print_error("No visual clips were created. Aborting."); return
-        
-    final_audio_tracks = [track for track in [full_narration_clip, music_clip] if track]
-    final_audio = CompositeAudioClip(final_audio_tracks).set_duration(total_duration) if final_audio_tracks else None
-    
-    final_video = CompositeVideoClip(all_clips, size=config.VIDEO_DIMS).set_duration(total_duration).set_audio(final_audio)
-
-    out_fpath = os.path.join(config.OUTPUT_DIR, sanitize_filename(final_plan.get("video_title")) + ".mp4")
-    try:
-        print_status(f"Writing final video to '{out_fpath}'...")
-        final_video.write_videofile(
-            out_fpath, codec="libx264", audio_codec="aac", fps=config.FPS,
-            threads=os.cpu_count(), preset="fast", logger='bar')
-        print_status(f"Video created: {out_fpath}")
-    except Exception as e:
-        print_error(f"Failed to write video file: {e}")
-    finally:
-        # Gracefully close all clips
-        for clip in all_clips + final_audio_tracks:
-            if hasattr(clip, 'close'): clip.close()
-        print_status("Cleaned up video and audio clips.")
+async def main_orchestrator(persona_file: str):
+    while True:
+        print("\nSelect Mode: [1] Generative [2] Transformative [3] Render From File [q] Quit")
+        choice = input("> ").strip().lower()
+        if choice == '1': await run_generative_mode(persona_file); break
+        elif choice == '2': await run_transformative_mode(persona_file); break
+        elif choice == '3': await run_render_from_file_mode(); break
+        elif choice in ['q', 'quit']: break
+        else: log.warning("Invalid choice.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="AI-powered video creation script.")
-    parser.add_argument(
-        "-p", "--persona",
-        default="brand_persona.json",
-        help="Path to the brand persona JSON file (default: brand_persona.json)"
-    )
+    check_dependencies()
+    
+    parser = argparse.ArgumentParser(description="AI-powered video creation orchestrator.")
+    parser.add_argument("-p", "--persona", default="brand_persona.json", help="Path to brand persona JSON file (relative to src).")
     args = parser.parse_args()
+    
     try:
-        asyncio.run(main_async_logic(args.persona))
-    except KeyboardInterrupt:
-        print_status("\nProcess interrupted by user. Exiting gracefully.")
-    except Exception as e_fatal:
-        print_error(f"FATAL UNHANDLED EXCEPTION in main: {e_fatal}")
-        traceback.print_exc()
+        setup_directories()
+        script_dir = os.path.dirname(__file__)
+        persona_path = os.path.join(script_dir, args.persona)
+        asyncio.run(main_orchestrator(persona_path))
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        log.info("\nProcess interrupted.")
+    except Exception as e:
+        log.critical(f"A fatal unhandled exception occurred: {e}"); traceback.print_exc()

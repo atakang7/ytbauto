@@ -1,0 +1,80 @@
+{
+  "video_title": "Just Do Something!",
+  "sections": [
+    {
+      "section_title": "Introduction",
+      "sub_scenes": [
+        {
+          "narration_text": "Feeling stuck and don't know what to do?",
+          "visual_search_query": "person looking confused at crossroads",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "stuck",
+            "don't know what to do"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "We all face moments of indecision.",
+          "visual_search_query": "person sitting contemplating in nature",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "moments of indecision"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Motivation to Act",
+      "sub_scenes": [
+        {
+          "narration_text": "The best way to overcome it is to take action.",
+          "visual_search_query": "person starting a journey, taking the first step",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "overcome",
+            "take action"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "Even small steps can lead to great achievements.",
+          "visual_search_query": "small plant growing in cracks",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "small steps",
+            "great achievements"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Conclusion",
+      "sub_scenes": [
+        {
+          "narration_text": "So what are you waiting for?",
+          "visual_search_query": "person looking determined, ready to act",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "what are you waiting for"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "Just do something and watch the transformation unfold.",
+          "visual_search_query": "time-lapse of blooming flower",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "do something",
+            "transformation"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Start your journey today\u2014do something transformative!",
+  "background_music_suggestion": "uplifting_motivational_track"
+}

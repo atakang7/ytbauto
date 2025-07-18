@@ -1,0 +1,82 @@
+{
+  "video_title": "Create Something",
+  "sections": [
+    {
+      "section_title": "Introduction to Creativity",
+      "sub_scenes": [
+        {
+          "narration_text": "Creativity is the heart of innovation.",
+          "visual_search_query": "heart of innovation, creative brainstorming",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "Creativity",
+            "innovation"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "It begins when you decide to create something unique.",
+          "visual_search_query": "person starting a unique project",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "decide",
+            "unique"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "The Creative Process",
+      "sub_scenes": [
+        {
+          "narration_text": "The creative process involves exploration and discovery.",
+          "visual_search_query": "exploration and discovery in art",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "exploration",
+            "discovery"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "Every brushstroke or idea can lead to a masterpiece.",
+          "visual_search_query": "artist painting, idea blooming",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "brushstroke",
+            "masterpiece"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Encouragement to Start",
+      "sub_scenes": [
+        {
+          "narration_text": "Don't be afraid to start creating today.",
+          "visual_search_query": "person starting a new creative project",
+          "emotion": "fearful",
+          "keywords_for_highlighting": [
+            "afraid",
+            "creating"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "The world needs your creativity.",
+          "visual_search_query": "world needing creativity, inspiring scenery",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "world",
+            "creativity"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Unleash your creativity and start your unique project today!",
+  "background_music_suggestion": "uplifting_inspirational_music"
+}

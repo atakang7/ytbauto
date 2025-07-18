@@ -1,0 +1,96 @@
+{
+  "video_title": "Take Action: Do Something",
+  "sections": [
+    {
+      "section_title": "Introduction to Taking Action",
+      "sub_scenes": [
+        {
+          "narration_text": "Have you ever felt the urge to change something in your life?",
+          "visual_search_query": "person contemplating change",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "urge",
+            "change",
+            "life"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "That moment is now.",
+          "visual_search_query": "clock showing present time",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "moment",
+            "now"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "The Power of Initiative",
+      "sub_scenes": [
+        {
+          "narration_text": "Taking the first step can be empowering.",
+          "visual_search_query": "person taking first step",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "first step",
+            "empowering"
+          ],
+          "motion_type": "pan_right"
+        },
+        {
+          "narration_text": "It leads to new opportunities.",
+          "visual_search_query": "doors opening new opportunities",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "new opportunities"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Overcoming Fear",
+      "sub_scenes": [
+        {
+          "narration_text": "Fear can hold us back.",
+          "visual_search_query": "person facing fear",
+          "emotion": "fearful",
+          "keywords_for_highlighting": [
+            "fear",
+            "hold us back"
+          ],
+          "motion_type": "pan_left"
+        },
+        {
+          "narration_text": "But courage pushes us forward.",
+          "visual_search_query": "person showing courage",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "courage",
+            "forward"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Call to Action",
+      "sub_scenes": [
+        {
+          "narration_text": "So, what will you do today?",
+          "visual_search_query": "person taking action",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "do today"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Start your journey now!",
+  "background_music_suggestion": "uplifting motivational track"
+}

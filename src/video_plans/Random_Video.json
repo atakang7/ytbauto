@@ -1,0 +1,48 @@
+{
+  "video_title": "Random Video",
+  "sections": [
+    {
+      "section_title": "Random Moments",
+      "sub_scenes": [
+        {
+          "narration_text": "Life is full of unexpected moments.",
+          "visual_search_query": "surprised person in nature",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "unexpected",
+            "moments"
+          ]
+        },
+        {
+          "narration_text": "Sometimes, they bring pure joy.",
+          "visual_search_query": "laughing friends at sunset",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "pure",
+            "joy"
+          ]
+        },
+        {
+          "narration_text": "Other times, they teach us lessons.",
+          "visual_search_query": "person thinking at ocean cliff",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "teach",
+            "lessons"
+          ]
+        },
+        {
+          "narration_text": "Every random experience shapes who we are.",
+          "visual_search_query": "people from different cultures",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "experience",
+            "shapes"
+          ]
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Embrace the random. Share your own moments with us!",
+  "background_music_suggestion": "Upbeat acoustic guitar"
+}
