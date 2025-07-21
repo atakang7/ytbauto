@@ -1,0 +1,86 @@
+{
+  "video_title": "The Alphabet Adventure: Letter A",
+  "sections": [
+    {
+      "section_title": "Introduction to A",
+      "sub_scenes": [
+        {
+          "narration_text": "The adventure begins with the first letter of the alphabet, A.",
+          "visual_search_query": "Alphabet letter A illustration",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "adventure",
+            "first letter",
+            "A"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Words Starting with A",
+      "sub_scenes": [
+        {
+          "narration_text": "A is for apple, a delicious fruit.",
+          "visual_search_query": "red apple on tree",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "apple",
+            "delicious",
+            "fruit"
+          ],
+          "motion_type": "pan_left"
+        },
+        {
+          "narration_text": "A is also for airplane, flying high in the sky.",
+          "visual_search_query": "airplane flying in blue sky",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "airplane",
+            "flying",
+            "sky"
+          ],
+          "motion_type": "pan_right"
+        },
+        {
+          "narration_text": "Another word is artist, someone who creates beautiful art.",
+          "visual_search_query": "painter with canvas",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "artist",
+            "creates",
+            "art"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "Fun Facts about A",
+      "sub_scenes": [
+        {
+          "narration_text": "Did you know A is also used in music, like the note A?",
+          "visual_search_query": "musician playing note A",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "music",
+            "note A"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "The letter A is used in multiple languages worldwide.",
+          "visual_search_query": "different languages letter A",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "multiple languages",
+            "worldwide"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Discover more about the wonders of the alphabet!",
+  "background_music_suggestion": "Upbeat and playful instrumental"
+}

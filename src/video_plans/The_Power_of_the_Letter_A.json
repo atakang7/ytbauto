@@ -1,0 +1,54 @@
+{
+  "video_title": "The Power of the Letter A",
+  "sections": [
+    {
+      "section_title": "Introduction to A",
+      "sub_scenes": [
+        {
+          "narration_text": "The letter A is the first letter of the alphabet.",
+          "visual_search_query": "alphabet letter A",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "A",
+            "first",
+            "alphabet"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Significance of A",
+      "sub_scenes": [
+        {
+          "narration_text": "It holds a significant position in language and communication.",
+          "visual_search_query": "communication importance letter A",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "significant",
+            "language",
+            "communication"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "A in Everyday Life",
+      "sub_scenes": [
+        {
+          "narration_text": "The letter A appears in many common words.",
+          "visual_search_query": "common words with letter A",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "common",
+            "words"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Discover more about the essential role of letters!",
+  "background_music_suggestion": "upbeat inspirational music"
+}

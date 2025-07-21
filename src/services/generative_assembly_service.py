@@ -42,15 +42,14 @@ class GenerativeAssemblyService:
 
         # Manually create the Call to Action scene object
         if plan.call_to_action_text:
-            # **THE FIX IS HERE**: We now provide the required 'scene_id'
+            # **THE FIX**: Use integer 999 instead of string "cta" for scene_id
             cta_overlay = TextOverlay(
                 text_content=plan.call_to_action_text,
-                scene_id="cta"
+                scene_id=999
             )
             cta_scene = SubScene(
                 narration_text=plan.call_to_action_text,
                 visual_search_query="abstract background",
-                text_overlay=cta_overlay,
                 emotion="upbeat"
             )
             scene_map.append({"scene": cta_scene, "id": "cta"})
@@ -72,10 +71,11 @@ class GenerativeAssemblyService:
             narration_clip = AudioFileClip(audio_path)
             narration_clips.append(narration_clip)
             
+            # Don't pass text_overlay since SubScene doesn't have that attribute
             segment = self.editor.process_segment(
                 source_path=video_path,
                 duration=narration_clip.duration,
-                overlay_plan=scene_obj.text_overlay,
+                overlay_plan=cta_overlay if scene_id == "cta" else None,
                 caption_data=processed_audio.get(scene_id, {}).get("asr_word_timings")
             )
             processed_segments.append(segment)

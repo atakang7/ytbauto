@@ -1,0 +1,42 @@
+{
+  "video_title": "Exploration of the Letter A",
+  "sections": [
+    {
+      "section_title": "Introduction to the Letter A",
+      "sub_scenes": [
+        {
+          "narration_text": "The letter A is the first letter of the alphabet.",
+          "visual_search_query": "alphabet letter A visual",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "first letter",
+            "alphabet",
+            "A"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "It is often associated with beginnings.",
+          "visual_search_query": "beginning concept imagery",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "beginnings"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "A is also known for its symmetry and simplicity.",
+          "visual_search_query": "symmetrical A design",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "symmetry",
+            "simplicity"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Discover more about alphabets with us!",
+  "background_music_suggestion": "gentle-instrumental"
+}

@@ -1,0 +1,114 @@
+{
+  "video_title": "Things Nobody Tells You About Living Alone",
+  "sections": [
+    {
+      "section_title": "Introduction",
+      "sub_scenes": [
+        {
+          "narration_text": "Things nobody tells you about living alone",
+          "visual_search_query": "person living alone thoughtful",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "living alone",
+            "nobody tells you"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Cereal for Dinner",
+      "sub_scenes": [
+        {
+          "narration_text": "You'll eat cereal for dinner and call it a balanced meal",
+          "visual_search_query": "messy kitchen cereal dinner",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "cereal",
+            "balanced meal"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "Conversations with Plants",
+      "sub_scenes": [
+        {
+          "narration_text": "You'll have full conversations with your plants... and they're better listeners than most people",
+          "visual_search_query": "person talking to houseplant",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "conversations",
+            "plants",
+            "listeners"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "Checking Door Lock",
+      "sub_scenes": [
+        {
+          "narration_text": "You'll check if you locked the door 47 times before bed",
+          "visual_search_query": "person checking door lock repeatedly",
+          "emotion": "fearful",
+          "keywords_for_highlighting": [
+            "door",
+            "locked",
+            "47 times"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Discovering True Self",
+      "sub_scenes": [
+        {
+          "narration_text": "You'll discover your true self when nobody's watching",
+          "visual_search_query": "person dancing alone living room",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "discover",
+            "true self"
+          ],
+          "motion_type": "zoom_in"
+        }
+      ]
+    },
+    {
+      "section_title": "Food Delivery",
+      "sub_scenes": [
+        {
+          "narration_text": "The delivery person becomes your most frequent visitor",
+          "visual_search_query": "food delivery person at door",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "delivery person",
+            "frequent visitor"
+          ],
+          "motion_type": "zoom_out"
+        }
+      ]
+    },
+    {
+      "section_title": "Conclusion",
+      "sub_scenes": [
+        {
+          "narration_text": "But honestly? It's the best",
+          "visual_search_query": "happy person living alone",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "honestly",
+            "the best"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Smile at camera",
+  "background_music_suggestion": "Trending upbeat audio"
+}

@@ -88,11 +88,6 @@ async def run_generative_mode(persona_file: str):
     with open(plan_path, 'w') as f: f.write(final_plan.json(indent=2))
     log.info(f"Plan saved to '{plan_path}'")
     
-    choice = input("AI plan saved. Proceed with asset gathering and rendering? (y/n): ").strip().lower()
-    if choice != 'y':
-        log.info("Render cancelled by user.")
-        return
-
     editor = VideoEditor()
     audio_service = AudioService(openai_client, speechify_client)
     media_service = MediaService()
@@ -132,11 +127,6 @@ async def run_transformative_mode(persona_file: str):
         with open(plan_path, 'w') as f: f.write(remix_plan.json(indent=2))
         log.info(f"Plan saved to '{plan_path}'")
         
-        choice = input("AI plan saved. Proceed with rendering? (y/n): ").strip().lower()
-        if choice != 'y':
-            log.info("Render cancelled by user.")
-            return
-
         editor = VideoEditor()
         media_service = MediaService()
         audio_service = AudioService(openai_client, speechify_client)

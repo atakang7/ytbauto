@@ -1,0 +1,83 @@
+{
+  "video_title": "The Importance of 'A'",
+  "sections": [
+    {
+      "section_title": "Introduction to 'A'",
+      "sub_scenes": [
+        {
+          "narration_text": "'A' is the first letter of the alphabet.",
+          "visual_search_query": "close-up of letter A, alphabet blocks",
+          "emotion": "calm",
+          "keywords_for_highlighting": [
+            "A",
+            "first",
+            "alphabet"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "It is a vowel and has various sounds.",
+          "visual_search_query": "letter A with sound waves",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "vowel",
+            "sounds"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    },
+    {
+      "section_title": "Usage of 'A'",
+      "sub_scenes": [
+        {
+          "narration_text": "'A' is used in many words like apple and ant.",
+          "visual_search_query": "apple and ant illustration",
+          "emotion": "excited",
+          "keywords_for_highlighting": [
+            "apple",
+            "ant"
+          ],
+          "motion_type": "zoom_out"
+        },
+        {
+          "narration_text": "It often appears in basic grammar structures.",
+          "visual_search_query": "grammar book, letter A emphasis",
+          "emotion": "assertive",
+          "keywords_for_highlighting": [
+            "grammar",
+            "structures"
+          ],
+          "motion_type": "pan_right"
+        }
+      ]
+    },
+    {
+      "section_title": "The Significance of 'A'",
+      "sub_scenes": [
+        {
+          "narration_text": "In many cultures, 'A' symbolizes the first or a beginning.",
+          "visual_search_query": "beginning concept, sunrise with letter A",
+          "emotion": "empathetic",
+          "keywords_for_highlighting": [
+            "cultures",
+            "beginning"
+          ],
+          "motion_type": "zoom_in"
+        },
+        {
+          "narration_text": "Artists and designers use 'A' for its aesthetic quality.",
+          "visual_search_query": "artistic letter A designs",
+          "emotion": "cheerful",
+          "keywords_for_highlighting": [
+            "artists",
+            "designers"
+          ],
+          "motion_type": "pan_left"
+        }
+      ]
+    }
+  ],
+  "call_to_action_text": "Explore more about the letter 'A' and its unique uses!",
+  "background_music_suggestion": "uplifting soft piano"
+}

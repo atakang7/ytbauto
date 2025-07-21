@@ -6,14 +6,14 @@
     "storytelling_perspective": "A first-person account from someone who has overcome this specific challenge. Use 'I' statements and share personal anecdotes before giving advice.",
     "vocabulary_level": "B1 Intermediate (Simple, accessible language. Avoid complex words.)",
     "speech_settings": {
-        "default_rate": "+15%",
+        "default_rate": "medium",
         "emotion_prosody_map": {
-            "empathetic": { "rate": "-10%", "pitch": "-15%", "volume": "medium" },
-            "excited":    { "rate": "+25%", "pitch": "+20%", "volume": "loud" },
-            "calm":       { "rate": "-5%",  "pitch": "-10%", "volume": "medium" },
-            "assertive":  { "rate": "+5%",  "pitch": "-5%",  "volume": "medium" },
-            "cheerful":   { "rate": "+15%", "pitch": "+10%", "volume": "medium" },
-            "fearful":    { "rate": "+10%", "pitch": "+5%", "volume": "medium" }
+            "empathetic": { "rate": "medium", "pitch": "medium", "volume": "medium" },
+            "excited":    { "rate": "medium", "pitch": "medium", "volume": "medium" },
+            "calm":       { "rate": "medium", "pitch": "medium", "volume": "medium" },
+            "assertive":  { "rate": "medium", "pitch": "medium", "volume": "medium" },
+            "cheerful":   { "rate": "medium", "pitch": "medium", "volume": "medium" },
+            "fearful":    { "rate": "medium", "pitch": "medium", "volume": "medium" }
         }
     },
     "style_examples": {
